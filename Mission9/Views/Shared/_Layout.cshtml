@@ -1,18 +1,48 @@
 ﻿<!DOCTYPE html>
-
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: darkgray;
+        color: white;
+        text-align: center;
+    }
+    .coolhover:hover {
+        background-color: lightblue;
+    }
+</style>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 
     <link href="~/lib/css/bootstrap.css" rel="stylesheet" />
-    
+
 </head>
+
 <body>
-    <div>
-        @RenderBody()
+    <div class="bg-dark text-white p-2">
+        <div class="navbar-brand m-lg-2">Online Bookstore</div>
     </div>
+
+    <div class="row m-1 p-1">
+        <div id="types" class="col-3">
+            <vc:categories></vc:categories>
+        </div>
+        <div class="col-9">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
     <br /><br /><br /><br />
 
+    <div class="footer bg-dark">
+        <p>Thanks for shopping our online bookstore!</p>
+    </div>
 </body>
 </html>

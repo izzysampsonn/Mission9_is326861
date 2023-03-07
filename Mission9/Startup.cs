@@ -34,6 +34,11 @@ namespace Mission9
            });
 
             services.AddScoped<BookstoreRepository, EFBookRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,12 +50,21 @@ namespace Mission9
             }
 
             app.UseStaticFiles(); // tells asp.net to use wwwroot files
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute(); 
+                endpoints.MapControllerRoute("categorypage", "{categoryType}/Page{pageNum}", new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("Paging", "Page{pageNum}", new { Controller = "Home", action = "Index" , pageNum = 1});
+
+                endpoints.MapControllerRoute("category", "{categoryType}", new { Controller = "Home", action = "Index", pageNum = 1 });
+
+
+                endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

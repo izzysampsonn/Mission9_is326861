@@ -4,26 +4,12 @@
 
 @model BooksViewModel
 
-<div class="container center">
-    <h1>Online Bookstore</h1>
-</div>
+
 
 
 @foreach (Book b in Model.Books)
 {
-    <div class="container">
-
-        <h4>Title: @b.Title</h4>
-
-        <ul>
-            <li>Author: @b.Author</li>
-            <li>Publisher: @b.Publisher</li>
-            <li>ISBN: @b.Isbn</li>
-            <li>Classification: @b.Classification</li>
-            <li>Number of Pages: @b.PageCount</li>
-            <li>Price: @b.Price</li>
-        </ul>
-    </div>
+    <partial name="ProjectSummary" model="b"/>
 }
 
 <div page-model="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
